@@ -3,7 +3,7 @@ using System.Linq;
 using System.Web.Mvc;
 using Serilog;
 
-namespace DemoWebApp.ActionFilters.Global
+namespace DemoWebApp.Infrastructure.ActionFilters.Global
 {
     public class RequestLogActionFilter : ActionFilterAttribute
     {

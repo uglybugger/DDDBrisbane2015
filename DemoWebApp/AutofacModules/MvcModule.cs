@@ -2,7 +2,7 @@
 using System.Web.Mvc;
 using Autofac;
 using Autofac.Integration.Mvc;
-using DemoWebApp.ActionFilters.Global;
+using DemoWebApp.Infrastructure.ActionFilters.Global;
 using ThirdDrawer.Extensions.CollectionExtensionMethods;
 using TypeExtensions = ThirdDrawer.Extensions.TypeExtensionMethods.TypeExtensions;
 
