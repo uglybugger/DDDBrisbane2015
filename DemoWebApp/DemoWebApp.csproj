@@ -125,8 +125,11 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="api\CustomerController.cs" />
-    <Compile Include="api\CustomerDto.cs" />
+    <Compile Include="api\v1\Customer1Controller.cs" />
+    <Compile Include="api\v1\CustomerDto.cs" />
+    <Compile Include="api\v2\Customer2Controller.cs" />
+    <Compile Include="api\v2\CustomerDto.cs" />
+    <Compile Include="api\v2\SearchDto.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -159,10 +162,12 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="AutofacModules\DevelopmentStubsModule.cs" />
     <Compile Include="AutofacModules\PersistenceModule.cs" />
     <Compile Include="AutofacModules\WebModule.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="DevelopmentStubs\DemoCustomers.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

@@ -1,6 +1,6 @@
 using System;
 
-namespace DemoWebApp.api
+namespace DemoWebApp.api.v1
 {
     public class CustomerDto
     {

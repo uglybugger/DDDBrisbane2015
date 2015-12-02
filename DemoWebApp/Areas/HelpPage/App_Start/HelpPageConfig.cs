@@ -2,21 +2,16 @@
 // package to your project.
 ////#define Handle_PageResultOfT
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
 using System.Net.Http.Headers;
-using System.Reflection;
-using System.Web;
 using System.Web.Http;
+using DemoWebApp.Areas.HelpPage.SampleGeneration;
+
 #if Handle_PageResultOfT
 using System.Web.Http.OData;
 #endif
 
-namespace DemoWebApp.Areas.HelpPage
+namespace DemoWebApp.Areas.HelpPage.App_Start
 {
     /// <summary>
     /// Use this class to customize the Help Page.
