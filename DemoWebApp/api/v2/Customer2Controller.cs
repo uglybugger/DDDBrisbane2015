@@ -36,6 +36,7 @@ namespace DemoWebApp.api.v2
         public HttpResponseMessage Get(Guid id)
         {
             if (id == Guid.Empty) return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Never heard of them.");
+
             var customer = _customerRepository.Get(id);
             var customerDto = new CustomerDto
             {

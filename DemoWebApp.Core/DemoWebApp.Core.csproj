@@ -40,6 +40,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Domain\Customer.cs" />
+    <Compile Include="Domain\DomainException.cs" />
+    <Compile Include="ExceptionExtensions.cs" />
+    <Compile Include="Domain\Human1.cs" />
+    <Compile Include="Domain\Human2.cs" />
+    <Compile Include="Domain\Pet.cs" />
     <Compile Include="IAggregateRoot.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="MemoryRepository.cs" />

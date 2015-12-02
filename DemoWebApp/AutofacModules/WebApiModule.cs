@@ -4,7 +4,7 @@ using Autofac.Integration.WebApi;
 
 namespace DemoWebApp.AutofacModules
 {
-    public class WebModule : Module
+    public class WebApiModule : Module
     {
         protected override void Load(ContainerBuilder builder)
         {
