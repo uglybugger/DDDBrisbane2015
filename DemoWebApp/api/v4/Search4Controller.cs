@@ -6,6 +6,8 @@ using System.Net.Http;
 using System.Web.Http;
 using DemoWebApp.Core;
 using DemoWebApp.Core.Domain;
+using DemoWebApp.Core.Domain.SuperVillainAggregate;
+using DemoWebApp.Core.Infrastructure;
 
 namespace DemoWebApp.api.v4
 {

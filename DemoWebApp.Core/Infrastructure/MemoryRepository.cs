@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace DemoWebApp.Core
+namespace DemoWebApp.Core.Infrastructure
 {
     public class MemoryRepository<T> : IRepository<T> where T : IAggregateRoot
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace DemoWebApp.Core
+namespace DemoWebApp.Core.Infrastructure
 {
     [Serializable]
     public class EntityNotFoundException : Exception

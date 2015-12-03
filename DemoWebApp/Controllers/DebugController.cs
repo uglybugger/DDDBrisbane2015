@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
 using DemoWebApp.Core;
+using DemoWebApp.Core.Infrastructure;
 
 namespace DemoWebApp.Controllers
 {

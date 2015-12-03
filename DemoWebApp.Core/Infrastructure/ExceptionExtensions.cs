@@ -1,6 +1,6 @@
 using System;
 
-namespace DemoWebApp.Core
+namespace DemoWebApp.Core.Infrastructure
 {
     public static class ExceptionExtensions
     {

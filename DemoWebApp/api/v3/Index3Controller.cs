@@ -4,14 +4,16 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using DemoWebApp.Core;
+using DemoWebApp.Core.Domain.SuperVillainAggregate;
+using DemoWebApp.Core.Infrastructure;
 
 namespace DemoWebApp.api.v3
 {
     public class Index3Controller : ApiController
     {
-        private readonly IRepository<Core.Domain.SuperVillain> _superVillainRepository;
+        private readonly IRepository<SuperVillain> _superVillainRepository;
 
-        public Index3Controller(IRepository<Core.Domain.SuperVillain> superVillainRepository)
+        public Index3Controller(IRepository<SuperVillain> superVillainRepository)
         {
             _superVillainRepository = superVillainRepository;
         }
@@ -51,7 +53,7 @@ namespace DemoWebApp.api.v3
         {
             if (!ModelState.IsValid) return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Bad request");
 
-            var superVillain = Core.Domain.SuperVillain.SignUp(superVillainDto.Id, superVillainDto.Name);
+            var superVillain = SuperVillain.SignUp(superVillainDto.Id, superVillainDto.Name);
             _superVillainRepository.Add(superVillain);
             return Request.CreateResponse(HttpStatusCode.OK, "");
         }

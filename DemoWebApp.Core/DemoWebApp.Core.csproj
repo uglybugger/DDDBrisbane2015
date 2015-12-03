@@ -30,6 +30,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Serilog, Version=1.5.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.1.5.10\lib\net45\Serilog.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serilog.FullNetFx, Version=1.5.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.1.5.10\lib\net45\Serilog.FullNetFx.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -37,20 +45,39 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="ThirdDrawer, Version=1.1.9.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ThirdDrawer.1.1.9.0\lib\net40\ThirdDrawer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Domain\SuperVillain.cs" />
-    <Compile Include="Domain\DomainException.cs" />
-    <Compile Include="EntityNotFoundException.cs" />
-    <Compile Include="ExceptionExtensions.cs" />
-    <Compile Include="Domain\Human1.cs" />
-    <Compile Include="Domain\Human2.cs" />
-    <Compile Include="Domain\Pet.cs" />
-    <Compile Include="IAggregateRoot.cs" />
-    <Compile Include="IRepository.cs" />
-    <Compile Include="MemoryRepository.cs" />
+    <Compile Include="Domain\MinionAggregate\MinionChangedLoyaltyToSuperVillainEvent.cs" />
+    <Compile Include="Domain\MinionAggregate\MinionRejoicedEvent.cs" />
+    <Compile Include="Domain\SuperVillainAggregate\SuperVillainAcquiredMinionEvent.cs" />
+    <Compile Include="Domain\SuperVillainAggregate\SuperVillainSignedUpEvent.cs" />
+    <Compile Include="EventHandlers\WhenAMinionRejoices\AnotherMinionShouldSmackIt.cs" />
+    <Compile Include="Infrastructure\EnumerableExtensions.cs" />
+    <Compile Include="EventHandlers\WhenASuperVillainAcquiresAMinion\AllTheirMinionsShouldRejoice.cs" />
+    <Compile Include="EventHandlers\WhenASuperVillainSignsUp\AllTheOtherSuperVillainsShouldTakeNote.cs" />
+    <Compile Include="Infrastructure\IHandleEvent.cs" />
+    <Compile Include="Infrastructure\AggregateRoot.cs" />
+    <Compile Include="Infrastructure\DomainEventsCollection.cs" />
+    <Compile Include="Infrastructure\Guard.cs" />
+    <Compile Include="Infrastructure\IDomainEvent.cs" />
+    <Compile Include="Domain\MinionAggregate\Minion.cs" />
+    <Compile Include="Domain\SuperVillainAggregate\SuperVillain.cs" />
+    <Compile Include="Infrastructure\DomainException.cs" />
+    <Compile Include="Infrastructure\EntityNotFoundException.cs" />
+    <Compile Include="Infrastructure\ExceptionExtensions.cs" />
+    <Compile Include="Infrastructure\IAggregateRoot.cs" />
+    <Compile Include="Infrastructure\IRepository.cs" />
+    <Compile Include="Infrastructure\MemoryRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

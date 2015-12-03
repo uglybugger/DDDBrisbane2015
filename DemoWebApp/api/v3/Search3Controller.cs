@@ -3,14 +3,16 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using DemoWebApp.Core;
+using DemoWebApp.Core.Domain.SuperVillainAggregate;
+using DemoWebApp.Core.Infrastructure;
 
 namespace DemoWebApp.api.v3
 {
     public class Search3Controller: ApiController
     {
-        private readonly IRepository<Core.Domain.SuperVillain> _superVillainRepository;
+        private readonly IRepository<SuperVillain> _superVillainRepository;
 
-        public Search3Controller(IRepository<Core.Domain.SuperVillain> superVillainRepository)
+        public Search3Controller(IRepository<SuperVillain> superVillainRepository)
         {
             _superVillainRepository = superVillainRepository;
         }

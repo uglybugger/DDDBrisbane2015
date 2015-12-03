@@ -2,6 +2,8 @@
 using Autofac;
 using DemoWebApp.Core;
 using DemoWebApp.Core.Domain;
+using DemoWebApp.Core.Domain.SuperVillainAggregate;
+using DemoWebApp.Core.Infrastructure;
 
 namespace DemoWebApp.DevelopmentStubs
 {

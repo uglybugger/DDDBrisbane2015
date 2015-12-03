@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using DemoWebApp.Core;
+using DemoWebApp.Core.Infrastructure;
 
 namespace DemoWebApp.AutofacModules
 {
