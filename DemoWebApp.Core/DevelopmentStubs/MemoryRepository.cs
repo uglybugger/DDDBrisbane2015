@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using DemoWebApp.Core.Infrastructure;
 
-namespace DemoWebApp.Core.Infrastructure
+namespace DemoWebApp.Core.DevelopmentStubs
 {
     public class MemoryRepository<T> : IRepository<T> where T : IAggregateRoot
     {

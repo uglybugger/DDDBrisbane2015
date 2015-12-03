@@ -59,6 +59,10 @@
     <Compile Include="Infrastructure\EnumerableExtensions.cs" />
     <Compile Include="EventHandlers\WhenASuperVillainAcquiresAMinion\AllTheirMinionsShouldRejoice.cs" />
     <Compile Include="EventHandlers\WhenASuperVillainSignsUp\AllTheOtherSuperVillainsShouldTakeNote.cs" />
+    <Compile Include="DevelopmentStubs\FakeDbContext.cs" />
+    <Compile Include="DevelopmentStubs\IFakeDbContext.cs" />
+    <Compile Include="Infrastructure\IUnitOfWork.cs" />
+    <Compile Include="Infrastructure\UnitOfWork.cs" />
     <Compile Include="Mediation\ICommand.cs" />
     <Compile Include="Mediation\IEvent.cs" />
     <Compile Include="Mediation\IHandleCommand.cs" />
@@ -74,7 +78,7 @@
     <Compile Include="Infrastructure\ExceptionExtensions.cs" />
     <Compile Include="Infrastructure\IAggregateRoot.cs" />
     <Compile Include="Infrastructure\IRepository.cs" />
-    <Compile Include="Infrastructure\MemoryRepository.cs" />
+    <Compile Include="DevelopmentStubs\MemoryRepository.cs" />
     <Compile Include="Mediation\IHandleRequest.cs" />
     <Compile Include="Mediation\IMediator.cs" />
     <Compile Include="Mediation\IRequest.cs" />

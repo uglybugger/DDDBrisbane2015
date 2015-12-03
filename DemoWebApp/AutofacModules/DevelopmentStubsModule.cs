@@ -1,4 +1,6 @@
 ﻿using Autofac;
+using DemoWebApp.Core.DevelopmentStubs;
+using DemoWebApp.Core.Infrastructure;
 
 namespace DemoWebApp.AutofacModules
 {
@@ -11,6 +13,14 @@ namespace DemoWebApp.AutofacModules
             builder.RegisterAssemblyTypes(ThisAssembly)
                 .AssignableTo<IStartable>()
                 .As<IStartable>()
+                .SingleInstance();
+
+            builder.RegisterType<FakeDbContext>()
+                .As<IFakeDbContext>()
+                .SingleInstance();
+
+            builder.RegisterGeneric(typeof (MemoryRepository<>))
+                .As(typeof (IRepository<>))
                 .SingleInstance();
         }
     }
