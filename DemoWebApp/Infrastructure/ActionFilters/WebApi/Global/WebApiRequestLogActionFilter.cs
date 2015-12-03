@@ -1,54 +1,58 @@
 ﻿using System.Diagnostics;
 using System.Linq;
-using System.Web.Mvc;
+using System.Web.Http.Controllers;
+using System.Web.Http.Filters;
+using Autofac.Integration.WebApi;
 using Serilog;
 
-namespace DemoWebApp.Infrastructure.ActionFilters.Global
+namespace DemoWebApp.Infrastructure.ActionFilters.WebApi.Global
 {
-    public class RequestLogActionFilter : ActionFilterAttribute
+    public class WebApiRequestLogActionFilter : IAutofacActionFilter
     {
         private readonly ILogger _logger;
 
         private readonly Stopwatch _sw;
 
-        public RequestLogActionFilter(ILogger logger)
+        public WebApiRequestLogActionFilter(ILogger logger)
         {
             _logger = logger;
             _sw = Stopwatch.StartNew();
         }
 
-        public override void OnActionExecuting(ActionExecutingContext filterContext)
+        public void OnActionExecuting(HttpActionContext actionContext)
         {
-            base.OnActionExecuting(filterContext);
-
             var logger = _logger;
-            var requestHeaders = filterContext.HttpContext.Request.Headers;
-            foreach (var key in requestHeaders.AllKeys)
+            var requestHeaders = actionContext.Request.Headers;
+            foreach (var kvp in requestHeaders.AsQueryable())
             {
-                if (key == "Authorization") continue;
-                var value = requestHeaders[key];
-                logger = logger.ForContext(key, value);
+                if (kvp.Key == "Authorization") continue;
+                logger = logger.ForContext(kvp.Key, kvp.Value);
             }
 
+            var httpMethod = actionContext.Request.Method;
+            var requestUrl = actionContext.Request.RequestUri.AbsolutePath;
+
             _logger.Debug("HTTP {HttpMethod} to {RawUrl} ({@RequestHeaders}) {RequestState}",
-                filterContext.HttpContext.Request.HttpMethod,
-                filterContext.HttpContext.Request.Url.AbsolutePath,
+                httpMethod,
+                requestUrl,
                 requestHeaders,
                 "started");
         }
 
-        public override void OnActionExecuted(ActionExecutedContext filterContext)
+        public void OnActionExecuted(HttpActionExecutedContext actionExecutedContext)
         {
-            base.OnActionExecuted(filterContext);
             _sw.Stop();
 
-            var exception = filterContext.Exception;
+            var exception = actionExecutedContext.Exception;
+            var httpMethod = actionExecutedContext.Request.Method;
+            var requestUrl = actionExecutedContext.Request.RequestUri.AbsolutePath;
+
             if (exception == null)
             {
                 _logger.Information("HTTP {HttpMethod} ({RequestDuration}) to {RawUrl} {RequestState}",
-                    filterContext.HttpContext.Request.HttpMethod,
+                    httpMethod,
                     _sw.Elapsed,
-                    filterContext.HttpContext.Request.Url.AbsolutePath,
+                    requestUrl,
                     "completed");
             }
             else
@@ -60,9 +64,9 @@ namespace DemoWebApp.Infrastructure.ActionFilters.Global
                 }
 
                 logContext.Error(exception, "HTTP {HttpMethod} ({RequestDuration}) to {RawUrl} {RequestState} ({Message})",
-                    filterContext.HttpContext.Request.HttpMethod,
+                    httpMethod,
                     _sw.Elapsed,
-                    filterContext.HttpContext.Request.Url.AbsolutePath,
+                    requestUrl,
                     "failed",
                     exception.Message);
             }

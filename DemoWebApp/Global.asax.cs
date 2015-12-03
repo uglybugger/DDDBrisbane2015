@@ -19,15 +19,16 @@ namespace DemoWebApp
         {
             _container = IoC.LetThereBeIoC();
 
-            DependencyResolver.SetResolver(new AutofacDependencyResolver(_container));
-            AreaRegistration.RegisterAllAreas();
-            RouteConfig.RegisterRoutes(RouteTable.Routes);
-            BundleConfig.RegisterBundles(BundleTable.Bundles);
-
+            // Order is important here. We should register WebAPI routes before MVC ones.
             GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver(_container);
             GlobalConfiguration.Configure(WebApiConfig.Register);
             GlobalConfiguration.Configuration.Formatters.XmlFormatter.SupportedMediaTypes.Clear();
             GlobalConfiguration.Configuration.Services.Replace(typeof (IExceptionLogger), new SerilogExceptionLogger());
+
+            DependencyResolver.SetResolver(new AutofacDependencyResolver(_container));
+            AreaRegistration.RegisterAllAreas();
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
 
         protected void Application_End()

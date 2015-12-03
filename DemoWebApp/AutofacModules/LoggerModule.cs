@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using AutofacSerilogIntegration;
 using Serilog;
+using SerilogWeb.Classic;
 
 namespace DemoWebApp.AutofacModules
 {
@@ -19,6 +20,8 @@ namespace DemoWebApp.AutofacModules
                 .CreateLogger();
 
             Log.Logger = logger;
+            ApplicationLifecycleModule.IsEnabled = true;
+            ApplicationLifecycleModule.LogPostedFormData = LogPostedFormDataOption.OnlyOnError; 
 
             Log.Information("Logger online");
 

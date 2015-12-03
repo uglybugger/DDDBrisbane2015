@@ -2,7 +2,7 @@
 using System.Web.Mvc;
 using Autofac;
 using Autofac.Integration.Mvc;
-using DemoWebApp.Infrastructure.ActionFilters.Global;
+using DemoWebApp.Infrastructure.ActionFilters.Mvc.Global;
 using ThirdDrawer.Extensions.CollectionExtensionMethods;
 using TypeExtensions = ThirdDrawer.Extensions.TypeExtensionMethods.TypeExtensions;
 
@@ -20,7 +20,7 @@ namespace DemoWebApp.AutofacModules
                 .DefinedTypes
                 .Where(t => t.IsAssignableTo<IActionFilter>())
                 .Where(TypeExtensions.IsInstantiable)
-                .Where(t => t.IsInNamespaceOf<RequestLogActionFilter>())
+                .Where(t => t.IsInNamespaceOf<MvcRequestLogActionFilter>())
                 .Do(t => builder.RegisterType(t)
                     .AsActionFilterFor<Controller>()
                     .InstancePerLifetimeScope())

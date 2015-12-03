@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Domain\Customer.cs" />
     <Compile Include="Domain\DomainException.cs" />
+    <Compile Include="EntityNotFoundException.cs" />
     <Compile Include="ExceptionExtensions.cs" />
     <Compile Include="Domain\Human1.cs" />
     <Compile Include="Domain\Human2.cs" />

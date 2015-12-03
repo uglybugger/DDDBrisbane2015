@@ -15,7 +15,12 @@ namespace DemoWebApp.Core
 
         public T Get(Guid id)
         {
-            return _items[id];
+            T item;
+            if (_items.TryGetValue(id, out item)) return item;
+
+            throw new EntityNotFoundException()
+                .WithData("EntityType", typeof (T).FullName)
+                .WithData("Id", id);
         }
 
         public T[] GetAll()
