@@ -26,16 +26,6 @@ namespace DemoWebApp.AutofacModules
                     .AsWebApiActionFilterFor<ApiController>()
                     .InstancePerLifetimeScope())
                 .Done();
-
-            ThisAssembly
-                .DefinedTypes
-                .Where(t => t.IsAssignableTo<IAutofacActionFilter>())
-                .Where(TypeExtensions.IsInstantiable)
-                .Where(t => t.IsInNamespaceOf<WebApiRequestLogActionFilter>())
-                .Do(t => builder.RegisterType(t)
-                    .AsWebApiActionFilterFor<ApiController>()
-                    .InstancePerLifetimeScope())
-                .Done();
         }
     }
 }
