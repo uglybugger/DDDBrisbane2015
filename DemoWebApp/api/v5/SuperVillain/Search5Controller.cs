@@ -2,7 +2,7 @@
 using System.Web.Http;
 using DemoWebApp.Core.Mediation;
 
-namespace DemoWebApp.api.v5
+namespace DemoWebApp.api.v5.SuperVillain
 {
     public class Search5Controller : ApiController
     {
