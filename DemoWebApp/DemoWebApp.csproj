@@ -204,7 +204,7 @@
     <Compile Include="Controllers\DebugController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
-    <Compile Include="DevelopmentStubs\DemoCustomers.cs" />
+    <Compile Include="DevelopmentStubs\DemoSuperVillains.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
