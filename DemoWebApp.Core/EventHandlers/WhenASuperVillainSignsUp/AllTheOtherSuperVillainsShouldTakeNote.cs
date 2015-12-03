@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using DemoWebApp.Core.Domain.SuperVillainAggregate;
 using DemoWebApp.Core.Infrastructure;
+using DemoWebApp.Core.Mediation;
 using ThirdDrawer.Extensions.CollectionExtensionMethods;
 
 namespace DemoWebApp.Core.EventHandlers.WhenASuperVillainSignsUp

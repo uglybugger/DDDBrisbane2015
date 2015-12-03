@@ -1,6 +1,8 @@
+using DemoWebApp.Core.Mediation;
+
 namespace DemoWebApp.Core.Infrastructure
 {
-    public interface IDomainEvent
+    public interface IDomainEvent: IEvent
     {
     }
 }

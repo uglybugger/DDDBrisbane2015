@@ -159,6 +159,8 @@
     <Compile Include="api\v5\Index5Controller.cs" />
     <Compile Include="api\v5\Search5Controller.cs" />
     <Compile Include="api\v5\SuperVillainDto.cs" />
+    <Compile Include="api\v5\SuperVillainSearchRequestHandler.cs" />
+    <Compile Include="AutofacModules\MediatorModule.cs" />
     <Compile Include="Infrastructure\ActionFilters\WebApi\Global\WebApiModelValidationAttribute.cs" />
     <Compile Include="api\v4\ModelValidationAttribute.cs" />
     <Compile Include="api\v4\SuperVillainDto.cs" />
@@ -214,6 +216,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\ActionFilters\WebApi\Global\WebApiRequestLogActionFilter.cs" />
+    <Compile Include="Infrastructure\AutofacMediator.cs" />
     <Compile Include="Infrastructure\ValidationExtensions.cs">
       <SubType>Code</SubType>
     </Compile>

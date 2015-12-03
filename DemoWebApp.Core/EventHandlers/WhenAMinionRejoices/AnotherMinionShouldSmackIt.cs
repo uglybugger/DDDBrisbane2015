@@ -2,6 +2,7 @@
 using System.Linq;
 using DemoWebApp.Core.Domain.MinionAggregate;
 using DemoWebApp.Core.Infrastructure;
+using DemoWebApp.Core.Mediation;
 using Serilog;
 using ThirdDrawer.Extensions.CollectionExtensionMethods;
 
