@@ -2,9 +2,9 @@
 
 namespace DemoWebApp.Core.Domain
 {
-    public class Customer : IAggregateRoot
+    public class SuperVillain : IAggregateRoot
     {
-        protected Customer(Guid id, string name)
+        protected SuperVillain(Guid id, string name)
         {
             Id = id;
             Name = name;
@@ -13,9 +13,9 @@ namespace DemoWebApp.Core.Domain
         public string Name { get; protected set; }
         public Guid Id { get; protected set; }
 
-        public static Customer SignUp(Guid id, string name)
+        public static SuperVillain SignUp(Guid id, string name)
         {
-            return new Customer(id, name);
+            return new SuperVillain(id, name);
         }
     }
 }

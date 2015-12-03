@@ -8,21 +8,21 @@ using DemoWebApp.Core.Domain;
 
 namespace DemoWebApp.api.v2
 {
-    public class Customer2Controller : ApiController
+    public class SuperVillain2Controller : ApiController
     {
-        private readonly IRepository<Customer> _customerRepository;
+        private readonly IRepository<SuperVillain> _superVillainRepository;
 
-        public Customer2Controller(IRepository<Customer> customerRepository)
+        public SuperVillain2Controller(IRepository<SuperVillain> superVillainRepository)
         {
-            _customerRepository = customerRepository;
+            _superVillainRepository = superVillainRepository;
         }
 
-        [Route("api/v2/Customer")]
+        [Route("api/v2/SuperVillain")]
         public HttpResponseMessage Get()
         {
-            var customers = _customerRepository.GetAll();
-            var dtos = customers
-                .Select(c => new CustomerDto
+            var superVillains = _superVillainRepository.GetAll();
+            var dtos = superVillains
+                .Select(c => new SuperVillainDto
                 {
                     Id = c.Id,
                     Name = c.Name
@@ -32,31 +32,31 @@ namespace DemoWebApp.api.v2
             return Request.CreateResponse(HttpStatusCode.OK, dtos);
         }
 
-        [Route("api/v2/Customer/{id}")]
+        [Route("api/v2/SuperVillain/{id}")]
         public HttpResponseMessage Get(Guid id)
         {
             if (id == Guid.Empty) return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Never heard of them.");
 
-            var customer = _customerRepository.Get(id);
-            var customerDto = new CustomerDto
+            var superVillain = _superVillainRepository.Get(id);
+            var superVillainDto = new SuperVillainDto
             {
-                Id = customer.Id,
-                Name = customer.Name
+                Id = superVillain.Id,
+                Name = superVillain.Name
             };
 
-            return Request.CreateResponse(customerDto);
+            return Request.CreateResponse(superVillainDto);
         }
 
         [HttpGet]
-        [Route("api/v2/Customer/Search/{name}")]
+        [Route("api/v2/SuperVillain/Search/{name}")]
         public HttpResponseMessage Search([FromUri] SearchDto searchCriteria)
         {
-            var customers = _customerRepository.GetAll()
+            var superVillains = _superVillainRepository.GetAll()
                 .Where(c => c.Name.ToLowerInvariant().Contains(searchCriteria.Name.ToLowerInvariant()))
                 .ToArray();
 
-            var dtos = customers
-                .Select(c => new CustomerDto
+            var dtos = superVillains
+                .Select(c => new SuperVillainDto
                 {
                     Id = c.Id,
                     Name = c.Name
@@ -66,11 +66,11 @@ namespace DemoWebApp.api.v2
             return Request.CreateResponse(HttpStatusCode.OK, dtos);
         }
 
-        [Route("api/v2/Customer")]
-        public HttpResponseMessage Post([FromBody] CustomerDto customerDto)
+        [Route("api/v2/SuperVillain")]
+        public HttpResponseMessage Post([FromBody] SuperVillainDto superVillainDto)
         {
-            var customer = Customer.SignUp(customerDto.Id, customerDto.Name);
-            _customerRepository.Add(customer);
+            var superVillain = SuperVillain.SignUp(superVillainDto.Id, superVillainDto.Name);
+            _superVillainRepository.Add(superVillain);
             return Request.CreateResponse(HttpStatusCode.OK, "");
         }
     }

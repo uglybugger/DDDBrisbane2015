@@ -8,23 +8,23 @@ namespace DemoWebApp.api.v3
 {
     public class Search3Controller: ApiController
     {
-        private readonly IRepository<Core.Domain.Customer> _customerRepository;
+        private readonly IRepository<Core.Domain.SuperVillain> _superVillainRepository;
 
-        public Search3Controller(IRepository<Core.Domain.Customer> customerRepository)
+        public Search3Controller(IRepository<Core.Domain.SuperVillain> superVillainRepository)
         {
-            _customerRepository = customerRepository;
+            _superVillainRepository = superVillainRepository;
         }
 
         [HttpGet]
-        [Route("api/v3/Customer/Search/{name}")]
+        [Route("api/v3/SuperVillain/Search/{name}")]
         public HttpResponseMessage Search([FromUri] SearchDto searchCriteria)
         {
-            var customers = _customerRepository.GetAll()
+            var superVillains = _superVillainRepository.GetAll()
                 .Where(c => c.Name.ToLowerInvariant().Contains(searchCriteria.Name.ToLowerInvariant()))
                 .ToArray();
 
-            var dtos = customers
-                .Select(c => new CustomerDto
+            var dtos = superVillains
+                .Select(c => new SuperVillainDto
                 {
                     Id = c.Id,
                     Name = c.Name

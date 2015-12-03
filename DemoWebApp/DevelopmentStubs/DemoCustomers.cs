@@ -5,28 +5,28 @@ using DemoWebApp.Core.Domain;
 
 namespace DemoWebApp.DevelopmentStubs
 {
-    public class DemoCustomers : IStartable
+    public class DemoSuperVillains : IStartable
     {
-        private readonly IRepository<Customer> _customerRepository;
+        private readonly IRepository<SuperVillain> _superVillainRepository;
 
-        public DemoCustomers(IRepository<Customer> customerRepository)
+        public DemoSuperVillains(IRepository<SuperVillain> superVillainRepository)
         {
-            _customerRepository = customerRepository;
+            _superVillainRepository = superVillainRepository;
         }
 
         public void Start()
         {
-            var wilma = Customer.SignUp(Guid.NewGuid(), "Wilma Flintstone");
-            _customerRepository.Add(wilma);
+            var feloniusGru = SuperVillain.SignUp(Guid.NewGuid(), "Felonius Gru");
+            _superVillainRepository.Add(feloniusGru);
 
-            var fred = Customer.SignUp(Guid.NewGuid(), "Fred Flintstone");
-            _customerRepository.Add(fred);
+            var margo = SuperVillain.SignUp(Guid.NewGuid(), "Margo Gru");
+            _superVillainRepository.Add(margo);
 
-            var betty = Customer.SignUp(Guid.NewGuid(), "Betty Rubble");
-            _customerRepository.Add(betty);
+            var edith = SuperVillain.SignUp(Guid.NewGuid(), "Edith Gru");
+            _superVillainRepository.Add(edith);
 
-            var barney = Customer.SignUp(Guid.NewGuid(), "Barney Rubble");
-            _customerRepository.Add(barney);
+            var agnes = SuperVillain.SignUp(Guid.NewGuid(), "Agnes Gru");
+            _superVillainRepository.Add(agnes);
         }
     }
 }

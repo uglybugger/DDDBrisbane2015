@@ -39,7 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Domain\Customer.cs" />
+    <Compile Include="Domain\SuperVillain.cs" />
     <Compile Include="Domain\DomainException.cs" />
     <Compile Include="EntityNotFoundException.cs" />
     <Compile Include="ExceptionExtensions.cs" />

@@ -153,17 +153,17 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="api\v3\CustomerDto.cs" />
+    <Compile Include="api\v3\SuperVillainDto.cs" />
     <Compile Include="api\v3\Index3Controller.cs" />
     <Compile Include="api\v3\Search3Controller.cs" />
-    <Compile Include="api\v4\CustomerDto.cs" />
+    <Compile Include="api\v4\SuperVillainDto.cs" />
     <Compile Include="api\v4\Index4Controller.cs" />
     <Compile Include="api\v4\Search4Controller.cs" />
     <Compile Include="Infrastructure\ActionFilters\Mvc\Global\MvcRequestLogActionFilter.cs" />
-    <Compile Include="api\v1\Customer1Controller.cs" />
-    <Compile Include="api\v1\CustomerDto.cs" />
-    <Compile Include="api\v2\Customer2Controller.cs" />
-    <Compile Include="api\v2\CustomerDto.cs" />
+    <Compile Include="api\v1\SuperVillain1Controller.cs" />
+    <Compile Include="api\v1\SuperVillainDto.cs" />
+    <Compile Include="api\v2\SuperVillain2Controller.cs" />
+    <Compile Include="api\v2\SuperVillainDto.cs" />
     <Compile Include="api\v2\SearchDto.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
