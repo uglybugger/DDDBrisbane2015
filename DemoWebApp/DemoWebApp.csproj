@@ -156,6 +156,9 @@
     <Compile Include="api\v3\CustomerDto.cs" />
     <Compile Include="api\v3\Index3Controller.cs" />
     <Compile Include="api\v3\Search3Controller.cs" />
+    <Compile Include="api\v4\CustomerDto.cs" />
+    <Compile Include="api\v4\Index4Controller.cs" />
+    <Compile Include="api\v4\Search4Controller.cs" />
     <Compile Include="Infrastructure\ActionFilters\Mvc\Global\MvcRequestLogActionFilter.cs" />
     <Compile Include="api\v1\Customer1Controller.cs" />
     <Compile Include="api\v1\CustomerDto.cs" />
