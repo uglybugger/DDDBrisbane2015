@@ -49,6 +49,8 @@ namespace DemoWebApp.api.v3
         [Route("api/v3/SuperVillain")]
         public HttpResponseMessage Post([FromBody] SuperVillainDto superVillainDto)
         {
+            if (!ModelState.IsValid) return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Bad request");
+
             var superVillain = Core.Domain.SuperVillain.SignUp(superVillainDto.Id, superVillainDto.Name);
             _superVillainRepository.Add(superVillain);
             return Request.CreateResponse(HttpStatusCode.OK, "");

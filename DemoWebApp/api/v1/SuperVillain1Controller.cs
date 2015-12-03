@@ -51,6 +51,8 @@ namespace DemoWebApp.api.v1
         [Route("api/v1/SuperVillain/Search/{name}")]
         public HttpResponseMessage Search(string name)
         {
+            if (!ModelState.IsValid) return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Bad request");
+
             var superVillains = _superVillainRepository.GetAll()
                 .Where(c => c.Name.ToLowerInvariant().Contains(name.ToLowerInvariant()))
                 .ToArray();
@@ -69,6 +71,8 @@ namespace DemoWebApp.api.v1
         [Route("api/v1/SuperVillain")]
         public HttpResponseMessage Post([FromBody] SuperVillainDto superVillainDto)
         {
+            if (!ModelState.IsValid) return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Bad request");
+
             var superVillain = SuperVillain.SignUp(superVillainDto.Id, superVillainDto.Name);
             _superVillainRepository.Add(superVillain);
             return Request.CreateResponse(HttpStatusCode.OK, "");

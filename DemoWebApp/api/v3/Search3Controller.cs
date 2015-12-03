@@ -19,6 +19,8 @@ namespace DemoWebApp.api.v3
         [Route("api/v3/SuperVillain/Search/{name}")]
         public HttpResponseMessage Search([FromUri] SearchDto searchCriteria)
         {
+            if (!ModelState.IsValid) return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Bad request");
+
             var superVillains = _superVillainRepository.GetAll()
                 .Where(c => c.Name.ToLowerInvariant().Contains(searchCriteria.Name.ToLowerInvariant()))
                 .ToArray();

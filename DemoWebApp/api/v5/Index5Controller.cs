@@ -6,18 +6,18 @@ using System.Web.Http;
 using DemoWebApp.Core;
 using DemoWebApp.Core.Domain;
 
-namespace DemoWebApp.api.v4
+namespace DemoWebApp.api.v5
 {
-    public class Index4Controller : ApiController
+    public class Index5Controller : ApiController
     {
         private readonly IRepository<SuperVillain> _superVillainRepository;
 
-        public Index4Controller(IRepository<SuperVillain> superVillainRepository)
+        public Index5Controller(IRepository<SuperVillain> superVillainRepository)
         {
             _superVillainRepository = superVillainRepository;
         }
 
-        [Route("api/v4/SuperVillain")]
+        [Route("api/v5/SuperVillain")]
         public HttpResponseMessage Get()
         {
             var superVillains = _superVillainRepository.GetAll();
@@ -32,7 +32,7 @@ namespace DemoWebApp.api.v4
             return Request.CreateResponse(HttpStatusCode.OK, dtos);
         }
 
-        [Route("api/v4/SuperVillain/{id}")]
+        [Route("api/v5/SuperVillain/{id}")]
         public HttpResponseMessage Get(Guid id)
         {
             if (id == Guid.Empty) return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Never heard of them.");
@@ -47,7 +47,7 @@ namespace DemoWebApp.api.v4
             return Request.CreateResponse(superVillainDto);
         }
 
-        [Route("api/v4/SuperVillain")]
+        [Route("api/v5/SuperVillain")]
         public HttpResponseMessage Post([FromBody] SuperVillainDto superVillainDto)
         {
             if (!ModelState.IsValid) return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Bad request");

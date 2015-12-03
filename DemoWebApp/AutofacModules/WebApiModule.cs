@@ -1,6 +1,5 @@
 ﻿using System.Linq;
 using System.Web.Http;
-using System.Web.Http.Filters;
 using Autofac;
 using Autofac.Integration.WebApi;
 using DemoWebApp.Infrastructure.ActionFilters.WebApi.Global;
@@ -17,6 +16,17 @@ namespace DemoWebApp.AutofacModules
 
             builder.RegisterApiControllers(ThisAssembly);
             builder.RegisterWebApiFilterProvider(GlobalConfiguration.Configuration);
+
+            ThisAssembly
+                .DefinedTypes
+                .Where(t => t.IsAssignableTo<IAutofacActionFilter>())
+                .Where(TypeExtensions.IsInstantiable)
+                .Where(t => t.IsInNamespaceOf<WebApiRequestLogActionFilter>())
+                .Do(t => builder.RegisterType(t)
+                    .AsWebApiActionFilterFor<ApiController>()
+                    .InstancePerLifetimeScope())
+                .Done();
+
             ThisAssembly
                 .DefinedTypes
                 .Where(t => t.IsAssignableTo<IAutofacActionFilter>())

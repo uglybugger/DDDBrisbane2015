@@ -156,6 +156,11 @@
     <Compile Include="api\v3\SuperVillainDto.cs" />
     <Compile Include="api\v3\Index3Controller.cs" />
     <Compile Include="api\v3\Search3Controller.cs" />
+    <Compile Include="api\v5\Index5Controller.cs" />
+    <Compile Include="api\v5\Search5Controller.cs" />
+    <Compile Include="api\v5\SuperVillainDto.cs" />
+    <Compile Include="Infrastructure\ActionFilters\WebApi\Global\WebApiModelValidationAttribute.cs" />
+    <Compile Include="api\v4\ModelValidationAttribute.cs" />
     <Compile Include="api\v4\SuperVillainDto.cs" />
     <Compile Include="api\v4\Index4Controller.cs" />
     <Compile Include="api\v4\Search4Controller.cs" />
@@ -209,6 +214,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\ActionFilters\WebApi\Global\WebApiRequestLogActionFilter.cs" />
+    <Compile Include="Infrastructure\ValidationExtensions.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="IoC.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Infrastructure\Logging\SerilogExceptionLogger.cs" />
