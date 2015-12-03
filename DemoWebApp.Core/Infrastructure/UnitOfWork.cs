@@ -57,7 +57,7 @@ namespace DemoWebApp.Core.Infrastructure
                 if (domainEventsThisPass.None()) break;
 
                 domainEventsThisPass
-                    .Do(e => _logger.Information(e.ToString())) // we should probably destructure this a bit better :)
+                    .Do(e => _logger.Information(e.ToString() + " {@DomainEvent}", e))
                     .Do(_mediator.Publish)
                     .Done();
             }
