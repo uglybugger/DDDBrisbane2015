@@ -15,3 +15,19 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.jumbotron {
+    background-color: #F5E050;
+}
+
+.navbar-brand {
+    color: white;
+}
+
+.navbar-inverse {
+    background-color: #095573;
+}
+
+.button-primary {
+    background-color: #095573;
+}
