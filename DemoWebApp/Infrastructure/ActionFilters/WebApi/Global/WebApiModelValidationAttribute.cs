@@ -23,6 +23,7 @@ namespace DemoWebApp.Infrastructure.ActionFilters.WebApi.Global
         public void OnActionExecuting(HttpActionContext actionContext)
         {
             var validationErrors = actionContext.ActionArguments.Values
+                .NotNull()
                 .SelectMany(arg => arg.ValidationErrors())
                 .ToArray();
 
